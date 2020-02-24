@@ -65,7 +65,7 @@ function getName(inputName) {
  * ### Challenge `makeSmartPerson`
  * 
  * @instructions
- * This function takes a single `name` argument and returns an object.
+ * This function takes a single `name` argument and retuns an object.
  * The returned object has the following characteristics:
  *     It has a `name` property that contains the argument passed in.
  *     It has a `sum` method that takes two numbers as arguments
@@ -74,8 +74,15 @@ function getName(inputName) {
  *         and returns a string like `Hello, my name is {name}`.
  *         where `{name}` is the name passed into `makeSmartPerson`.
 */
-function makeSmartPerson(/* code here */) {
-  /* code here */
+function makeSmartPerson(name) {
+  return {
+    name: name, 
+    sum: function (num1, num2){
+      return num1 + num2;},
+      speak: function(){
+      return `Hello my name is ${name}`
+    }
+   }
 }
 
 
