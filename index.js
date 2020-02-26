@@ -187,7 +187,14 @@ function getCarInfoById(inventory, carID) {
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
 function sortCarInventory(inventory) {
-
+    return inventory.sort( (a, b) => {
+      let compare = 0;
+      if (a.car_model > b.car_model){
+        compare = 1;
+      } else if (a.car_model < b.car_model){
+        compare = -1;
+      } return compare;
+    });
 }
 
 /**
@@ -200,7 +207,11 @@ function sortCarInventory(inventory) {
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
 function getModelYears(inventory) {
-  
+  const carYear = []
+  for (let i = 0; i < inventory.length; i++){
+    carYear.push(inventory[i].car_year)
+  }
+  return carYear;
 }
 
 /**
@@ -215,8 +226,14 @@ function getModelYears(inventory) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+function getOlderCars(inventory, year) {
+  const oldCars = []
+  for (let i = 0; i < inventory.length; i++){
+    if (inventory[i].car_year <= year){
+      oldCars.push(inventory[i])
+    }
+  }
+  return oldCars;
 }
 
 /**
@@ -230,8 +247,17 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(inventory) {
+  const gCars = []
+  for (let i = 0; i<inventory.length; i++){
+    if (inventory[i].car_make === 'Audi'
+        ||inventory[i].car_make === 'Mercedes-Benz'||
+        inventory[i].car_make ===`Volkswagen`||
+        inventory[i].car_make === 'BMW' ){
+      gCars.push(inventory[i])
+    }
+  }
+  return gCars
 }
 
 /**
@@ -252,9 +278,15 @@ function getGermanCars(/* code here */) {
  *   return num * 2
  * }
 */
-const sum = null; // code here!
-const addFive = null; // code here!
-const argTimesTwo = null; // code here!
+const sum = (a, b) => {
+  return a+b 
+} 
+const addFive = (num) => {
+  return num + 5
+} // code here!
+const argTimesTwo = (num) => {
+  return num *2 
+} // code here!
 
 /**
  * ### Challenge `carMaker`
